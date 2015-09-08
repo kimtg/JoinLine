@@ -22,12 +22,12 @@
 			var txtSep = document.getElementById("txtSep");
 			var radioNewline = document.getElementById("radioNewline");
 			var radioTab = document.getElementById("radioTab");
-			
+
 			function replaceAll(text, searchValue, newValue) {
 				return text.split(searchValue).join(newValue);
 			}
-			
-			function resizeTextArea() {				
+
+			function resizeTextArea() {
 				var heightOfForm = document.getElementById('formWrapper').offsetHeight;
 				var heightOfBody = document.body.clientHeight;
 				var buffer = 35;
@@ -35,21 +35,21 @@
 			}
 
 			function btnJoin() {
-				var t = area.value.replace(/\s+$|\r/g, "");				
+				var t = area.value.replace(/\s+$|\r/g, "");
 				if (radioNewline.checked)
 					var searchValue = "\n";
 				else
 					var searchValue = "\t";
 				txtLine.value = replaceAll(t, searchValue, txtSep.value);
 			}
-			
+
 			function btnSplit() {
 				if (radioNewline.checked)
 					var newValue = "\r\n";
 				else
 					var newValue = "\t";
-				area.value = replaceAll(txtLine.value, txtSep.value, newValue);					
-			}			
+				area.value = replaceAll(txtLine.value, txtSep.value, newValue);
+			}
 		</script>
 	</body>
 </html>
