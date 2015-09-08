@@ -1,0 +1,55 @@
+<html>
+	<meta charset="UTF-8">
+	<head><title>JoinLine</title></head>
+	<body onload="resizeTextArea(); area.focus();" onresize="resizeTextArea()">
+		<form id="form1">
+			<textarea id="area" style="width: 100%"></textarea>
+			<div id="formWrapper">
+				Source is separated by:
+				<input type="radio" id="radioNewline" name="sep" checked/>Newline
+				<input type="radio" id="radioTab" name="sep"/>Tab
+				<br/>
+				<input type="button" value="Join" onclick="btnJoin()"/>
+				<input type="button" value="Split" onclick="btnSplit()"/>
+				Separator:
+				<input type="text" id="txtSep" value=", "/>
+				<br>
+				<input type="text" id="txtLine" style="width: 100%"/>
+			</div>
+		</form>
+		<script type="text/javascript">
+			var area = document.getElementById("area");
+			var txtSep = document.getElementById("txtSep");
+			var radioNewline = document.getElementById("radioNewline");
+			var radioTab = document.getElementById("radioTab");
+			
+			function replaceAll(text, searchValue, newValue) {
+				return text.split(searchValue).join(newValue);
+			}
+			
+			function resizeTextArea() {				
+				var heightOfForm = document.getElementById('formWrapper').offsetHeight;
+				var heightOfBody = document.body.clientHeight;
+				var buffer = 35;
+				area.style.height = (heightOfBody - heightOfForm) - buffer;
+			}
+
+			function btnJoin() {
+				var t = area.value.replace(/\s+$|\r/g, "");				
+				if (radioNewline.checked)
+					var searchValue = "\n";
+				else
+					var searchValue = "\t";
+				txtLine.value = replaceAll(t, searchValue, txtSep.value);
+			}
+			
+			function btnSplit() {
+				if (radioNewline.checked)
+					var newValue = "\r\n";
+				else
+					var newValue = "\t";
+				area.value = replaceAll(txtLine.value, txtSep.value, newValue);					
+			}			
+		</script>
+	</body>
+</html>
