@@ -1,9 +1,9 @@
 <html>
 	<meta charset="UTF-8">
 	<head><title>JoinLine</title></head>
-	<body onload="resizeTextArea(); area.focus();" onresize="resizeTextArea()">
+	<body onload="resizeTextArea(); area.focus();">
 		<form id="form1">
-			<textarea id="area" style="width: 100%"></textarea>
+			<textarea id="area" style="width: 100%; height: calc(100% - 80px);"></textarea>
 			<div id="formWrapper">
 				Source is separated by:
 				<input type="radio" id="radioNewline" name="sep" checked/>Newline
@@ -26,13 +26,6 @@
 
 			function replaceAll(text, searchValue, newValue) {
 				return text.split(searchValue).join(newValue);
-			}
-
-			function resizeTextArea() {
-				var heightOfForm = document.getElementById('formWrapper').offsetHeight;
-				var heightOfBody = document.body.clientHeight;
-				var buffer = 35;
-				area.style.height = (heightOfBody - heightOfForm) - buffer;
 			}
 
 			function btnJoin() {
