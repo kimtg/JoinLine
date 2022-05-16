@@ -5,4 +5,4 @@ This program supports Excel copy/paste.
 
 (Row -> newline, column -> tab character)
 
-[Run](http://rawgit.com/kimtg/JoinLine/master/JoinLine.html)
+[Run](http://kimtg.github.io/JoinLine/JoinLine.html)
